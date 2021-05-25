@@ -7,8 +7,6 @@ import { NavLink } from 'react-router-dom';
 class Header extends Component {
     constructor(props) {
         super(props);
-    
-        this.toggleNav = this.toggleNav.bind(this);
         this.state = {
             isNavOpen: false,
             isModalOpen: false
@@ -80,7 +78,7 @@ class Header extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
-                    <   Form onSubmit={this.handleLogin}>
+                        <Form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input type="text" id="username" name="username"
