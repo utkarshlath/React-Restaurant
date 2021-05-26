@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Label, Row, Col } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
@@ -27,7 +27,7 @@ import { baseUrl } from '../shared/baseUrl';
         }
 
         handleSubmit(values) {
-            this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
+            this.props.postComment(this.props.dishId, values.rating, values.name, values.comment);
         }
 
         render(){
@@ -128,7 +128,7 @@ import { baseUrl } from '../shared/baseUrl';
             );
     }
 
-    function RenderComments({comments, addComment, dishId}){
+    function RenderComments({comments, postComment, dishId}){
         if (comments == null) {
             return (<div></div>)
         }
@@ -153,7 +153,7 @@ import { baseUrl } from '../shared/baseUrl';
                 <ul className='list-unstyled'>
                     {cmnts}
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         )
     }
@@ -196,7 +196,7 @@ import { baseUrl } from '../shared/baseUrl';
                             <RenderDish dish={props.dish} />
                         </div>
                         <div className="col-12 col-md-5 m-1">
-                            <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id}/>
+                            <RenderComments comments={props.comments} postComment={props.postComment} dishId={props.dish.id}/>
                         </div>
                     </div>
                 </div>
